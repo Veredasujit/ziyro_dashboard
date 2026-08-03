@@ -13,15 +13,17 @@ import {
 
 /* ================= TYPES ================= */
 
+type Role = "admin" | "user" | "service_partner";
+
 export interface Admin {
   adminId: string;
   fullName: string;
   email: string;
-  role: string;
+  mobileNumber: string;
+  role: Role; // ✅
   status: "active" | "inactive" | "blocked";
   isVerified: boolean;
   lastLogin?: string;
-  createdAt?: string;
 }
 
 export interface AdminAuthResponse {
@@ -34,7 +36,7 @@ export interface AdminAuthResponse {
 
 export interface AdminOtpRequest {
   email: string;
-  password: string;
+  password?: string;
 }
 
 export interface VerifyAdminOtpRequest {

@@ -28,6 +28,17 @@ export interface Vehicle {
   year?: number;
   price?: number;
   images?: string[];
+  vehicleTitle:string;
+  modalNumber:string;
+  version:string;
+  vehicleColor:string;
+  manufacturingYear:string;
+  fuelType:string;
+  kmsDriven:string;
+  ownerType: string;
+  lastServiceDate: string;
+  sellingPrice: number;
+
 }
 
 export interface BuyRequest {
@@ -48,6 +59,7 @@ export interface BuyRequest {
   createdAt: string;
   vehicle?: Vehicle;
   buyer?: Buyer;
+  updatedAt:string;
 }
 
 export interface BuyRequestsResponse {

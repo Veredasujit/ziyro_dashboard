@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import toast from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -112,9 +112,9 @@ const Users = () => {
   const currentUsers = filteredUsers.slice(startIndex, startIndex + itemsPerPage);
 
   // Reset page when filters change
-  useState(() => {
-    setPage(1);
-  }, [searchTerm, roleFilter, itemsPerPage]);
+  useEffect(() => {
+  setPage(1);
+}, [searchTerm, roleFilter, itemsPerPage]);
 
   const handleDeleteClick = (userId: string) => {
     setUserToDelete(userId);

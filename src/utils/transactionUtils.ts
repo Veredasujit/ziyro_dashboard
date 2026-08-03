@@ -1,5 +1,5 @@
 // src/utils/transactionUtils.ts
-import type { Transaction, TransactionStats } from '../types/type';
+// import type { Transaction, TransactionStats } from '../types/type';
 
 export const getStatusColor = (status: string): string => {
   switch (status) {
@@ -33,27 +33,27 @@ export const formatDate = (dateString: string): string => {
 
 
 
-export const calculateStats = (transactions: Transaction[]): TransactionStats => {
-  return transactions.reduce<TransactionStats>(
-    (stats, transaction) => {
-      const amount = Number(transaction.amount) || 0; // ✅ convert to number safely
+// export const calculateStats = (transactions: Transaction[]): TransactionStats => {
+//   return transactions.reduce<TransactionStats>(
+//     (stats, transaction) => {
+//       const amount = Number(transaction.amount) || 0; // ✅ convert to number safely
 
-      stats.total += 1;
-      stats.totalRevenue += amount;
+//       stats.total += 1;
+//       stats.totalRevenue += amount;
 
-      if (transaction.status === "paid") stats.paid += 1;
-      else if (transaction.status === "pending") stats.pending += 1;
-      else if (transaction.status === "failed") stats.failed += 1;
+//       if (transaction.status === "paid") stats.paid += 1;
+//       else if (transaction.status === "pending") stats.pending += 1;
+//       else if (transaction.status === "failed") stats.failed += 1;
 
-      return stats;
-    },
-    {
-      total: 0,
-      paid: 0,
-      pending: 0,
-      failed: 0,
-      totalRevenue: 0,
-    }
-  );
-};
+//       return stats;
+//     },
+//     {
+//       total: 0,
+//       paid: 0,
+//       pending: 0,
+//       failed: 0,
+//       totalRevenue: 0,
+//     }
+//   );
+// };
 

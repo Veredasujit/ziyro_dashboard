@@ -3,11 +3,10 @@ import toast from "react-hot-toast";
 import {
   useGetAllVehicleRequestsQuery,
   useUpdateRequestStatusMutation,
+  type BuyRequest,
 } from "../Redux/api/bikebuyerApi";
 import { 
   Eye, 
-  CheckCircle, 
-  XCircle, 
   Phone, 
   Mail, 
   MapPin, 
@@ -17,7 +16,6 @@ import {
   Gauge,
   CalendarDays,
   CreditCard,
-  Clock,
   Bike,
   User,
   DollarSign,
@@ -25,9 +23,12 @@ import {
   Smartphone,
   Building2
 } from "lucide-react";
+import {  CheckCircle, XCircle, Clock } from "lucide-react";
+import type{ LucideIcon } from "lucide-react";
+
 
 const BikeBuyerRequest = () => {
-  const [selectedRequest, setSelectedRequest] = useState(null);
+  const [selectedRequest, setSelectedRequest] = useState<BuyRequest | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const { data, isLoading, refetch } = useGetAllVehicleRequestsQuery();
@@ -55,21 +56,50 @@ const BikeBuyerRequest = () => {
     setSelectedRequest(null);
   };
 
-  const getStatusBadge = (status: string) => {
-    const statusConfig = {
-      approved: { bg: "bg-green-100", text: "text-green-700", icon: CheckCircle },
-      rejected: { bg: "bg-red-100", text: "text-red-700", icon: XCircle },
-      pending: { bg: "bg-yellow-100", text: "text-yellow-700", icon: Clock }
-    };
-    const config = statusConfig[status.toLowerCase()] || statusConfig.pending;
-    const Icon = config.icon;
-    return (
-      <span className={`px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 w-fit ${config.bg} ${config.text}`}>
-        <Icon size={12} />
-        {status}
-      </span>
-    );
-  };
+  
+
+type Status = "approved" | "rejected" | "pending";
+
+const statusConfig: Record<
+  Status,
+  {
+    bg: string;
+    text: string;
+    icon: LucideIcon;
+  }
+> = {
+  approved: {
+    bg: "bg-green-100",
+    text: "text-green-700",
+    icon: CheckCircle,
+  },
+  rejected: {
+    bg: "bg-red-100",
+    text: "text-red-700",
+    icon: XCircle,
+  },
+  pending: {
+    bg: "bg-yellow-100",
+    text: "text-yellow-700",
+    icon: Clock,
+  },
+};
+
+const getStatusBadge = (status: string) => {
+  const key = status.toLowerCase() as Status;
+
+  const config = statusConfig[key] ?? statusConfig.pending;
+  const Icon = config.icon;
+
+  return (
+    <span
+      className={`px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 w-fit ${config.bg} ${config.text}`}
+    >
+      <Icon size={12} />
+      {status}
+    </span>
+  );
+};
 
   if (isLoading) {
     return (

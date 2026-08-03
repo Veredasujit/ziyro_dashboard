@@ -41,12 +41,15 @@
 //   role: "user"|"service_partner",
 // }
 
+type Role = "admin" | "user" | "service_partner";
+
+
 export interface User {
   adminId: string;
   fullName: string;
   email: string;
   mobileNumber:string;
-  role: "admin";
+  role:Role;
   status: "active" | "inactive" | "blocked";
   isVerified: boolean;
   lastLogin?: string;
@@ -60,3 +63,4 @@ export interface User {
   isAuthenticated: boolean;
   loading: boolean;
 }
+
