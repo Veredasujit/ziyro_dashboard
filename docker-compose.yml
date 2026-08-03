@@ -1,0 +1,23 @@
+
+
+services:
+  web_blue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: zyro_dashboard:blue
+    
+    ports:
+      - '5189:5189'  # Map host 5186 to container 5187
+    networks:
+      - backend
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Kolkata
+      - PORT=5189  # Ensure Next.js listens on port 5187
+
+networks:
+  backend:
+    driver: bridge
