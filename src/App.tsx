@@ -11,6 +11,7 @@ import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users"; // Import your Users page
 import BikeBuyerRequest from "./pages/BikeBuyerRequest";
 import AdminUserManagement from "./pages/AdminUserManagement";
+import ContactManagementPage from "./pages/ContactUs";
 
 function App() {
   return (
@@ -46,6 +47,10 @@ function App() {
           <Route
             path="/bike-buy-request"
             element={<BikeBuyerRequest />}
+          />
+          <Route
+            path="/contact-us"
+            element={<ContactManagementPage />}
           />
         </Route>
       </Routes>  

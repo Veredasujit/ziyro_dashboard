@@ -33,6 +33,11 @@ const menuItems = [
     icon: User,
   },
   {
+    name: "ContactUS",
+    path: "/contact-us",
+    icon: Users,
+  },
+  {
     name: "Settings",
     path: "/settings",
     icon: Settings,
