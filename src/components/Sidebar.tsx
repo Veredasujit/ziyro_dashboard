@@ -2,7 +2,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
   Users,
-  Settings,
   User,
   LogOut,
 } from "lucide-react";
@@ -36,11 +35,6 @@ const menuItems = [
     name: "ContactUS",
     path: "/contact-us",
     icon: Users,
-  },
-  {
-    name: "Settings",
-    path: "/settings",
-    icon: Settings,
   },
   
 ];

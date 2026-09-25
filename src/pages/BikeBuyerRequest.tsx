@@ -47,9 +47,11 @@ const BikeBuyerRequest = () => {
   };
 
   const openModal = (request: any) => {
-    setSelectedRequest(request);
-    setIsModalOpen(true);
-  };
+  
+
+  setSelectedRequest(request);
+  setIsModalOpen(true);
+};
 
   const closeModal = () => {
     setIsModalOpen(false);

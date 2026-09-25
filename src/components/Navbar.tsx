@@ -1,5 +1,5 @@
-import { Menu, ChevronDown, User, Settings, LogOut, Shield } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Menu, ChevronDown, LogOut, Shield } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -152,7 +152,7 @@ const Navbar = ({ onMenuClick }: NavbarProps) => {
 
                     {/* Menu Items */}
                     <div className="py-2">
-                      <Link
+                      {/* <Link
                         to="/profile"
                         onClick={() => setIsDropdownOpen(false)}
                         className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition group"
@@ -161,9 +161,9 @@ const Navbar = ({ onMenuClick }: NavbarProps) => {
                         <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
                           My Profile
                         </span>
-                      </Link>
+                      </Link> */}
 
-                      <Link
+                      {/* <Link
                         to="/settings"
                         onClick={() => setIsDropdownOpen(false)}
                         className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition group"
@@ -172,7 +172,7 @@ const Navbar = ({ onMenuClick }: NavbarProps) => {
                         <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
                           Settings
                         </span>
-                      </Link>
+                      </Link> */}
 
                       <div className="border-t border-gray-100 dark:border-gray-700 my-1" />
 

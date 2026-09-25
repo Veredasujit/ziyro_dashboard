@@ -4,41 +4,47 @@ import Navbar from "../components/Navbar";
 import { useState } from "react";
 
 const DashboardLayout = () => {
-  const [sidebarOpen, setSidebarOpen] =
-    useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
 
   return (
-    <div className="flex bg-gray-100">
-      {/* Desktop Sidebar */}
-      <div className="hidden lg:block">
+    <div className="min-h-screen bg-gray-100">
+      {/* ================= DESKTOP SIDEBAR ================= */}
+      <aside className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-40 lg:block lg:w-64">
         <Sidebar />
-      </div>
+      </aside>
 
-      {/* Mobile Sidebar */}
+      {/* ================= MOBILE SIDEBAR OVERLAY ================= */}
       {sidebarOpen && (
-        <>
-          <div
-            className="fixed inset-0 bg-black/50 z-40"
-            onClick={() =>
-              setSidebarOpen(false)
-            }
-          />
-
-          <div className="fixed left-0 top-0 z-50">
-            <Sidebar />
-          </div>
-        </>
+        <div
+          className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+          onClick={closeSidebar}
+        />
       )}
 
-      {/* Content */}
-      <div className="flex-1 min-h-screen">
-        <Navbar
-          onMenuClick={() =>
-            setSidebarOpen(true)
-          }
-        />
+      {/* ================= MOBILE SIDEBAR ================= */}
+      <aside
+        className={`
+          fixed left-0 top-0 z-50 h-screen w-64
+          transform bg-white shadow-xl
+          transition-transform duration-300 ease-in-out
+          lg:hidden
+          ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+        `}
+      >
+        <Sidebar />
+      </aside>
 
-        <main className="p-6">
+      {/* ================= MAIN AREA ================= */}
+      <div className="min-h-screen lg:pl-64">
+        {/* Navbar */}
+        <Navbar onMenuClick={() => setSidebarOpen(true)} />
+
+        {/* Page Content */}
+        <main className="p-3 sm:p-4 md:p-6">
           <Outlet />
         </main>
       </div>
